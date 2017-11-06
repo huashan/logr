@@ -1,0 +1,18 @@
+Package: logr
+Type: Package
+Version: 0.1-003
+Date: 2017-11-06
+Title: R logging package for parallel computing
+Author: Huashan Chen
+Maintainer: Huashan Chen <chenhuashan@gmail.com>
+Depends:
+    R (>= 3.1.1)
+Imports:
+    R6
+Description: R logging package for parallel computing by CHEN, Huashan
+License: BSD
+LazyLoad: TRUE
+KeepSource: TRUE
+ByteCompile: yes
+Encoding: UTF-8
+RoxygenNote: 5.0.1
