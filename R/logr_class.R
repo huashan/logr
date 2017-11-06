@@ -35,15 +35,21 @@
 #' foreach(j = 1:6, .packages = 'logr', .export = c('do_thread')) %dopar% do_thread(j, loger)
 #' mcEnd()
 #' rm(loger);gc(T)
+#' 
+#' logr$new('192.168.1.3', port = 9999, logfile = 'log.txt')
 logr <- R6Class("logr",
                     public = list(
-                      initialize = function(host = 'localhost', port = 5555) {
+                      initialize = function(host = 'localhost', port = 5555, logfile) {
                         if (Sys.info()['sysname'] == 'Windows') {
                           nc <- system.file('exe/nc.exe', package = 'logr')
                           if (nc == '') stop('nc.exe not exists')
                           cmd <- sprintf('%s -l -s %s -p %d', shQuote(nc), host, port)
                         } else {
                           cmd <- sprintf('nc -lk %d', port)
+                        }
+                        if (!missing(logfile)) {
+                          dir.create(dirname(logfile), recursive = T, showWarnings = F)
+                          cmd <- sprintf('%s > %s', cmd, shQuote(logfile))
                         }
                         system(cmd, wait = FALSE,
                                show.output.on.console = FALSE, invisible = FALSE)
