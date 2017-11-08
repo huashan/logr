@@ -1,6 +1,6 @@
 Package: logr
 Type: Package
-Version: 0.1-003
+Version: 0.1-005
 Date: 2017-11-06
 Title: R logging package for parallel computing
 Author: Huashan Chen
